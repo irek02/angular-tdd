@@ -1,3 +1,7 @@
 <ul>
   <li class='todo' *ngFor="let todo of todos">{{ todo }}</li>
 </ul>
+
+<div *ngIf="todos.length == 0" class="empty">
+  No todos!
+</div>

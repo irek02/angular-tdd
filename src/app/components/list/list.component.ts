@@ -16,4 +16,8 @@ export class ListComponent implements OnInit {
     this.todos = this.todoService.getTodos();
   }
 
+  saveTodoClick() {
+
+  }
+
 }

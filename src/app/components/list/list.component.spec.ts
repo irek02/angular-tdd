@@ -38,4 +38,25 @@ describe('ListComponent', () => {
     expect(fixture.nativeElement.querySelectorAll('.todo').length).toBe(3);
 
   });
+
+  it('should display empty message when there are no todos', () => {
+
+    spyOn(todoServiceMock, 'getTodos').and.returnValue([]);
+
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.empty')).toBeTruthy();
+
+  });
+
+  it('should not display empty message when there are todos', () => {
+
+    spyOn(todoServiceMock, 'getTodos').and.returnValue(['one']);
+
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.empty')).toBeFalsy();
+
+  });
+
 });

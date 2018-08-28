@@ -1,7 +1,10 @@
-<ul>
-  <li class='todo' *ngFor="let todo of todos">{{ todo }}</li>
-</ul>
+<div class='todo card my-3' *ngFor="let todo of todos">
+  <div class="card-body">
+    {{ todo }}
+  </div>
+</div>
 
-<div *ngIf="todos.length == 0" class="empty">
+
+<div *ngIf="todos.length == 0" class="empty alert alert-warning" role="alert">
   No todos!
 </div>

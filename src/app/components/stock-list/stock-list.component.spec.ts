@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StockListComponent } from './stock-list.component';
 import { StockService } from '../../services/stock.service';
+import { By } from '@angular/platform-browser';
 
 fdescribe('StockListComponent', () => {
   let component: StockListComponent;
@@ -10,7 +11,10 @@ fdescribe('StockListComponent', () => {
 
   const elements = () => {
     return {
-      stocks: fixture.nativeElement.querySelectorAll('.stock')
+      stocks: fixture.debugElement.queryAll(By.css('.stock')),
+      stockName: fixture.debugElement.query(By.css('.stock .name')),
+      stockPrice: fixture.debugElement.query(By.css('.stock .price')),
+      buyBtn: fixture.debugElement.query(By.css('.stock .buyBtn'))
     };
   };
 
@@ -18,22 +22,22 @@ fdescribe('StockListComponent', () => {
     {
       id: 1,
       name: 'Apple',
-      sharePrice: 195
+      price: 195
     },
     {
       id: 2,
       name: 'Tesla',
-      sharePrice: 115
+      price: 115
     },
     {
       id: 3,
       name: 'CocaCola',
-      sharePrice: 98
+      price: 98
     },
     {
       id: 4,
       name: 'GE',
-      sharePrice: 90
+      price: 90
     }
   ];
 
@@ -53,9 +57,13 @@ fdescribe('StockListComponent', () => {
     stockService = TestBed.get(StockService);
   });
 
-  it('should list stocks', () => {
+  beforeEach(() => {
 
     spyOn(stockService, 'getStocks').and.returnValue(mockedStocks);
+
+  });
+
+  it('should list stocks', () => {
 
     fixture.detectChanges();
 
@@ -63,14 +71,28 @@ fdescribe('StockListComponent', () => {
 
   });
 
-  // it('should show info for each stock', () => {
+  it('should show info for a stock', () => {
 
-  //   spyOn(stockService, 'getStocks').and.returnValue(['Apple', 'Tesla', 'CocaCola', 'GE']);
+    fixture.detectChanges();
 
-  //   fixture.detectChanges();
+    expect(elements().stockName.nativeElement.textContent).toContain('Apple');
 
-  //   expect(elements().stocks.length).toBe(4);
+    expect(elements().stockPrice.nativeElement.textContent).toContain('195');
 
-  // });
+  });
+
+  it('should show buy button for a stock', () => {
+
+    fixture.detectChanges();
+
+    const buyBtn = elements().buyBtn;
+
+    expect(buyBtn).toBeTruthy();
+
+    console.log(buyBtn.references);
+
+    // expect(buyBtn.attributes).toBeTruthy();
+
+  });
 
 });

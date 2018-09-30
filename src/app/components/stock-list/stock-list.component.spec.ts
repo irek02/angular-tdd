@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { StockListComponent } from './stock-list.component';
 import { StockService } from '../../services/stock.service';
@@ -14,7 +15,7 @@ fdescribe('StockListComponent', () => {
       stocks: fixture.debugElement.queryAll(By.css('.stock')),
       stockName: fixture.debugElement.query(By.css('.stock .name')),
       stockPrice: fixture.debugElement.query(By.css('.stock .price')),
-      buyBtn: fixture.debugElement.query(By.css('.stock .buyBtn'))
+      buyBtn: fixture.debugElement.query(By.css('.stock .buyBtn a'))
     };
   };
 
@@ -44,6 +45,7 @@ fdescribe('StockListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [StockListComponent],
+      // imports: [ RouterTestingModule ],
       providers: [
         StockService
       ]
@@ -89,9 +91,7 @@ fdescribe('StockListComponent', () => {
 
     expect(buyBtn).toBeTruthy();
 
-    console.log(buyBtn.references);
-
-    // expect(buyBtn.attributes).toBeTruthy();
+    expect(buyBtn.attributes.routerLink).toEqual('/buy/1');
 
   });
 

@@ -1,5 +1,5 @@
 <div class='stock' *ngFor="let stock of stocks">
   <div class='name'>{{ stock.name }}</div>
   <div class='price'>{{ stock.price }}</div>
-  <div class='buyBtn'><a routerLink="/crisis-center">Buy</a></div>
+  <div class='buyBtn'><a [routerLink]="['/buy', stock.id]">Buy</a></div>
 </div>

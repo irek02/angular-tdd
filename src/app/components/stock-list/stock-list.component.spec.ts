@@ -45,7 +45,7 @@ fdescribe('StockListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [StockListComponent],
-      // imports: [ RouterTestingModule ],
+      imports: [ RouterTestingModule ],
       providers: [
         StockService
       ]
@@ -91,7 +91,7 @@ fdescribe('StockListComponent', () => {
 
     expect(buyBtn).toBeTruthy();
 
-    expect(buyBtn.attributes.routerLink).toEqual('/buy/1');
+    expect(buyBtn.nativeElement.getAttribute('href')).toEqual('/buy/1');
 
   });
 

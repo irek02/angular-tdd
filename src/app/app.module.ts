@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { StockListComponent } from './components/stock-list/stock-list.component';
 import { StockService } from './services/stock.service';
 
-const appRoutes: Routes = [
-  { path: '', redirectTo: StockListComponent, pathMatch: 'full' }
+const routes: Routes = [
+  { path: '', redirectTo: '/stocks', pathMatch: 'full' },
+  { path: 'stocks', component: StockListComponent },
 ];
 
 @NgModule({
@@ -17,10 +18,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    )
+    RouterModule.forRoot(routes)
   ],
   providers: [StockService],
   bootstrap: [AppComponent]

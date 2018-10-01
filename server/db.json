@@ -1,9 +1,24 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
+  "stocks": [
+    {
+      "id": 1,
+      "name": "Apple",
+      "price": 195
+    },
+    {
+      "id": 2,
+      "name": "Tesla",
+      "price": 115
+    },
+    {
+      "id": 3,
+      "name": "CocaCola",
+      "price": 98
+    },
+    {
+      "id": 4,
+      "name": "GE",
+      "price": 90
+    }
+  ]
 }

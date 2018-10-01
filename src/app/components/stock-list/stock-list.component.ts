@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StockService } from '../../services/stock.service';
+import { Observable } from 'rxjs';
+import { StockService, Stock } from '../../services/stock.service';
 
 @Component({
   selector: 'app-stock-list',
@@ -8,13 +9,13 @@ import { StockService } from '../../services/stock.service';
 })
 export class StockListComponent implements OnInit {
 
-  stocks = [];
+  stocks$: Observable<Stock[]>;
 
   constructor(private stockService: StockService) { }
 
   ngOnInit() {
 
-    this.stocks = this.stockService.getStocks();
+    this.stocks$ = this.stockService.getStocks();
 
   }
 

@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-
-import { StockListComponent } from './stock-list.component';
-import { StockService } from '../../services/stock.service';
+import { ComponentFixture, TestBed, async, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
+import { spyOnClass } from 'jasmine-es6-spies';
+import { of } from 'rxjs';
+import { Stock, StockService } from '../../services/stock.service';
+import { StockListComponent } from './stock-list.component';
 
-fdescribe('StockListComponent', () => {
+describe('StockListComponent', () => {
   let component: StockListComponent;
   let fixture: ComponentFixture<StockListComponent>;
-  let stockService: StockService;
+  let stockService: jasmine.SpyObj<StockService>;
 
   const elements = () => {
     return {
@@ -19,7 +20,7 @@ fdescribe('StockListComponent', () => {
     };
   };
 
-  const mockedStocks = [
+  const mockedStocks: Stock[] = [
     {
       id: 1,
       name: 'Apple',
@@ -47,7 +48,7 @@ fdescribe('StockListComponent', () => {
       declarations: [StockListComponent],
       imports: [ RouterTestingModule ],
       providers: [
-        StockService
+        { provide: StockService, useFactory: () => spyOnClass(StockService) },
       ]
     })
       .compileComponents();
@@ -61,7 +62,7 @@ fdescribe('StockListComponent', () => {
 
   beforeEach(() => {
 
-    spyOn(stockService, 'getStocks').and.returnValue(mockedStocks);
+    stockService.getStocks.and.returnValue(of(mockedStocks));
 
   });
 

@@ -20,6 +20,14 @@
       true,
       "rxjs/Rx"
     ],
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "lowercase-last",
+        "module-source-path": "full"
+      }
+    ],
     "import-spacing": true,
     "indent": [
       true,

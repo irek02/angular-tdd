@@ -1,14 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { StockListComponent } from './components/stock-list/stock-list.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/stocks', pathMatch: 'full' },
+  { path: 'stocks', component: StockListComponent },
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StockListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent]

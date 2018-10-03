@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { StockService, Stock } from '../../services/stock.service';
+import { Stock, StockService } from '../../services/stock.service';
 
 @Component({
   selector: 'app-stock-list',

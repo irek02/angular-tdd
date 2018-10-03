@@ -44,6 +44,7 @@ describe('StockListComponent', () => {
   ];
 
   beforeEach(async(() => {
+
     TestBed.configureTestingModule({
       declarations: [StockListComponent],
       imports: [ RouterTestingModule ],
@@ -52,12 +53,15 @@ describe('StockListComponent', () => {
       ]
     })
       .compileComponents();
+
   }));
 
   beforeEach(() => {
+
     fixture = TestBed.createComponent(StockListComponent);
     component = fixture.componentInstance;
     stockService = TestBed.get(StockService);
+
   });
 
   beforeEach(() => {

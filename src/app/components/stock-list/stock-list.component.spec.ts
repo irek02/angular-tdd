@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { spyOnClass } from 'jasmine-es6-spies';
+import { of } from 'rxjs';
 import { StockService } from '../../services/stock.service';
 import { StockListComponent } from './stock-list.component';
 
@@ -62,7 +63,7 @@ describe('StockListComponent', () => {
 
   beforeEach(() => {
 
-    stockService.getStocks.and.returnValue(mockedStocks);
+    stockService.getStocks.and.returnValue(of(mockedStocks));
 
   });
 

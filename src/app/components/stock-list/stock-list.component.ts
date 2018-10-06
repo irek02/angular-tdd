@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { StockService } from '../../services/stock.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { StockService } from '../../services/stock.service';
 })
 export class StockListComponent implements OnInit {
 
-  public stocks = [];
+  public stocks$: Observable<any>;
 
   constructor(
     private stockService: StockService
@@ -16,7 +17,7 @@ export class StockListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.stocks = this.stockService.getStocks();
+    this.stocks$ = this.stockService.getStocks();
 
   }
 

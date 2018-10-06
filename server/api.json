@@ -1,0 +1,24 @@
+{
+  "stocks": [
+    {
+      "id": 1,
+      "name": "Apple",
+      "price": 195
+    },
+    {
+      "id": 2,
+      "name": "Tesla",
+      "price": 115
+    },
+    {
+      "id": 3,
+      "name": "CocaCola",
+      "price": 98
+    },
+    {
+      "id": 4,
+      "name": "GE",
+      "price": 90
+    }
+  ]
+}

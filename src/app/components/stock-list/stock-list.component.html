@@ -1,4 +1,4 @@
-<div class="stock" *ngFor="let stock of stocks">
+<div class="stock" *ngFor="let stock of stocks$ | async">
   <div class="name">{{ stock.name }}</div>
   <div class="price">{{ stock.price }}</div>
   <div class='buyBtn'><a [routerLink]="['/buy', stock.id]">Buy</a></div>

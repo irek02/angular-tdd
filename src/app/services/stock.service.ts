@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
@@ -6,11 +7,13 @@ import { Observable, of } from 'rxjs';
 })
 export class StockService {
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
   getStocks(): Observable<any> {
 
-    // Use HttpClient to call the API URL and return data.
-    return of([]);
+    return this.httpClient.get('stocks');
+
   }
 }

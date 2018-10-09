@@ -13,7 +13,7 @@ export class StockService {
 
   getStocks(): Observable<any> {
 
-    return this.httpClient.get('stocks');
+    return this.httpClient.get('http://localhost:3000/stocks');
 
   }
 }

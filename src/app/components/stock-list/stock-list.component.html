@@ -1,5 +1,22 @@
-<div class="stock" *ngFor="let stock of stocks$ | async">
-  <div class="name">{{ stock.name }}</div>
-  <div class="price">{{ stock.price }}</div>
-  <div class='buyBtn'><a [routerLink]="['/buy', stock.id]">Buy</a></div>
-</div>
+<h1>Stocks</h1>
+
+<table class="table table-striped mt-5">
+
+  <thead>
+    <tr>
+      <th scope="col">Stock</th>
+      <th scope="col">Price per share, $</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <tr class="stock" *ngFor="let stock of stocks$ | async">
+    <td class="name">{{ stock.name }}</td>
+    <td class="price">{{ stock.price }}</td>
+    <td class='buyBtn'><a [routerLink]="['/buy', stock.id]">Buy</a></td>
+  </tr>
+  </tbody>
+
+</table>
+

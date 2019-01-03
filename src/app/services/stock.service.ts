@@ -17,13 +17,7 @@ export class StockService {
 
   getStocks(): Observable<Stock[]> {
 
-    return this.httpGet('http://localhost:3000/stocks');
-
-  }
-
-  private httpGet(url: string): Observable<any> {
-
-    return this.httpClient.get(url);
+    return this.httpClient.get<Stock[]>('http://localhost:3000/stocks');
 
   }
 
